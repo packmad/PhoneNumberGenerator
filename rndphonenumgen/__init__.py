@@ -41,13 +41,13 @@ if __name__ == "__main__":
 
     size = int(args['size'])
     with open(args['output'], 'w') as file:
-        if args['format'] == 'csv':
-            phone_writer = csv.writer(file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
-            phone_writer.writerow(googlecsv)
+        if args['format'] == 'csv':  # for google contacts import
+            csv_writer = csv.writer(file, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+            csv_writer.writerow(googlecsv)
             for i in range(size):
-                phone_writer.writerow(create_list())
+                csv_writer.writerow(create_list())
         elif args['format'] == 'txt':
             for i in range(size):
                 file.write(get_rnd_phone() + '\n')
     file.close()
-    print('End.')
+    print('--end---')
